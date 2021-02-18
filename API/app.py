@@ -1,5 +1,9 @@
 import falcon
-app = falcon.API()
+from views import SignUp
 
 
-app.add_route('')
+app = application = falcon.API()
+app.req_options.auto_parse_form_urlencoded = True
+
+#routes
+app.add_route("/signup", SignUp())
