@@ -22,9 +22,14 @@ class CLIENT_error:
     INVALID_LOGIN = """{"error": "INVALID LOGIN"}"""
     WRONG_PASSWORD = """{"error": "WRONG PASSWORD"}"""
     UNSATISFIED_LOGIN = """{"error": "UNSATISFIED LOGIN"}"""
+    CANNOT_CREATE_ROOM = """{"error": "CANNOT CREATE ROOM"}"""
+    WRONG_MESSAGE_OBJ = """{"error": "WRONG MESSAGE OBJECT"}"""
 
 class Utils:
     def makeUuid(self,size):
+        return ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(size))
+
+    def makeRoomName(self,size):
         return ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(size))
 
     #STRING TO PYTHON DICT

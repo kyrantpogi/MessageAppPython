@@ -30,6 +30,43 @@ class Db:
         self.cursor.execute(sql)
         myresult = self.cursor.fetchall()
         return myresult
+    
+    def addRoom(self,room_name,owner,shared):
+        sql = "INSERT INTO room_info (room_name, owner, shared) VALUES (%s,%s,%s)"
+        val = (room_name,owner,shared)
+        self.cursor.execute(sql,val)
+        self.mydb.commit()
+    
+    def getRooms(self,owner):
+        sql = f"SELECT * FROM room_info WHERE owner='{owner}' UNION SELECT * FROM room_info WHERE shared='{owner}'"
+        self.cursor.execute(sql)
+        return self.cursor.fetchall()
 
 
+class MessageDb:
+    def __init__(self):
+        self.mydb = mysql.connector.connect(
+            host="localhost",
+            user="tom",
+            password="Redhat@123456",
+            database="messages"
+        )
 
+        self.cursor = self.mydb.cursor(dictionary=True)
+
+    def createTableRoom(self,room_name):
+        sql = f"CREATE TABLE {room_name} (id INT NOT NULL AUTO_INCREMENT, message TEXT, sender VARCHAR(255), reciever VARCHAR(255),PRIMARY KEY (id))"
+        self.cursor.execute(sql)
+        self.mydb.commit()
+
+    def insertMessage(self,x):
+        sql = f"""INSERT INTO {x["room_name"]} (message, sender, reciever) VALUES (%s, %s, %s)"""
+        val = (x["message"], x["sender"], x["receiver"])
+        print(sql,val)
+        self.cursor.execute(sql,val)
+        self.mydb.commit()
+
+    def getMessages(self,room):
+        sql = f"SELECT * FROM {room}"
+        self.cursor.execute(sql)
+        return self.cursor.fetchall()
