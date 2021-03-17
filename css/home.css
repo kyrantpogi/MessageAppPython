@@ -1,0 +1,71 @@
+.mainPanel {
+    margin: 2%;
+}
+
+.dim {
+    opacity: 20%;
+}
+
+#composeForm {
+    width: 20rem;
+    margin: 5% auto ;
+}
+
+.hide {
+    display: none;
+}
+
+#room-name {
+    position: absolute;
+}
+
+#room-panel {
+    margin-top: 10px;
+    width: 90px;
+}
+
+#room-panel button {
+    margin-top: 5px;
+}
+
+#message-panel {
+    position: absolute;
+    width: 50%;
+    height: 60%;
+    margin-bottom: 10px;
+    left: 340px;
+}
+
+#msg-input {
+    position: absolute;
+    bottom: 0px;
+}
+
+#messages {
+    position: relative;
+    overflow-y: scroll;
+    overflow-x: scroll;
+    height: auto;
+}
+
+.message-wrapper {
+    position: relative;
+    width: auto;
+    height: 45px;
+}
+
+.message-sender {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+}
+
+.message-receiver {
+    position: absolute;
+    top: 15px;
+    left: 10px;
+}
+
+.small-textinput {
+    height: 40px;
+}
