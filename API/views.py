@@ -114,8 +114,30 @@ class getMessages(Utils, object):
         room = req.params["room"]
         mdb = MessageDb()
 
-        messages = mdb.getMessages(room)
-        res.body = super().JSON_dumps(messages)
+        try:
+            messages = mdb.getMessages(room)
+            for data in messages:
+                data["date_time"] = str(data["date_time"])
+            res.body = super().JSON_dumps(messages)
+        except:
+            res.body = CLIENT_error.INVALID_ROOM
+
+class lastMessage(Utils, object):
+    def on_get(sqlf,req,res):
+        room = req.params["room"]
+        mdb = MessageDb()
+
+        try:
+            messages = mdb.lastMessage(room)
+            for data in messages:
+                data["date_time"] = str(data["date_time"])
+            print("=====================")
+            print(messages)
+            print("=====================")
+            res.body = super().JSON_dumps(messages)
+        except:
+            res.body = CLIENT_error.INVALID_ROOM
+
 
 #test url
 class Test(Utils,object):

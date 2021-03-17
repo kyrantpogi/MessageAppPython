@@ -22,5 +22,6 @@ app.add_route("/compose-message", ComposeMessage())
 app.add_route("/get-rooms", getRooms())
 app.add_route("/send-message", sendMessage())
 app.add_route("/get-messages", getMessages())
+app.add_route("/last-message", lastMessage())
 app.add_route("/test", Test())
 

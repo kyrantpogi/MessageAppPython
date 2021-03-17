@@ -24,6 +24,7 @@ class CLIENT_error:
     UNSATISFIED_LOGIN = """{"error": "UNSATISFIED LOGIN"}"""
     CANNOT_CREATE_ROOM = """{"error": "CANNOT CREATE ROOM"}"""
     WRONG_MESSAGE_OBJ = """{"error": "WRONG MESSAGE OBJECT"}"""
+    INVALID_ROOM = """{"error": "INVALID ROOM"}"""
 
 class Utils:
     def makeUuid(self,size):

@@ -1,0 +1,8 @@
+room_info
+id room_name owner 
+
+messages[db]
+roomname[table] ex: 0o138ed
+id message sender receiver
+
+CREATE TABLE C4SRM0Q3QG418C (id INT NOT NULL AUTO_INCREMENT, message TEXT, sender VARCHAR(255), reciever VARCHAR(255),PRIMARY KEY (id));

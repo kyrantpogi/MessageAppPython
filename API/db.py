@@ -1,5 +1,5 @@
 import mysql.connector
-from utils import bcolors
+from datetime import datetime as dt
 
 class Db:
     def __init__(self):
@@ -55,18 +55,24 @@ class MessageDb:
         self.cursor = self.mydb.cursor(dictionary=True)
 
     def createTableRoom(self,room_name):
-        sql = f"CREATE TABLE {room_name} (id INT NOT NULL AUTO_INCREMENT, message TEXT, sender VARCHAR(255), reciever VARCHAR(255),PRIMARY KEY (id))"
+        sql = f"CREATE TABLE {room_name} (id INT NOT NULL AUTO_INCREMENT, message TEXT, sender VARCHAR(255), reciever VARCHAR(255), date_time DATETIME, PRIMARY KEY (id))"
         self.cursor.execute(sql)
         self.mydb.commit()
 
     def insertMessage(self,x):
-        sql = f"""INSERT INTO {x["room_name"]} (message, sender, reciever) VALUES (%s, %s, %s)"""
-        val = (x["message"], x["sender"], x["receiver"])
+        timestamp=(dt.now()).strftime('%Y-%m-%d %I:%M:%S')
+        sql = f"""INSERT INTO {x["room_name"]} (message, sender, reciever, date_time) VALUES (%s, %s, %s, %s)"""
+        val = (x["message"], x["sender"], x["receiver"],timestamp)
         print(sql,val)
         self.cursor.execute(sql,val)
         self.mydb.commit()
 
     def getMessages(self,room):
         sql = f"SELECT * FROM {room}"
+        self.cursor.execute(sql)
+        return self.cursor.fetchall()
+
+    def lastMessage(self,room):
+        sql = f"SELECT * FROM {room} ORDER BY id DESC LIMIT 1"
         self.cursor.execute(sql)
         return self.cursor.fetchall()
