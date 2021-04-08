@@ -23,5 +23,6 @@ app.add_route("/get-rooms", getRooms())
 app.add_route("/send-message", sendMessage())
 app.add_route("/get-messages", getMessages())
 app.add_route("/last-message", lastMessage())
+app.add_route("/scroll-load-message", scrollLoadMessage())
 app.add_route("/test", Test())
 

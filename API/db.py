@@ -68,11 +68,17 @@ class MessageDb:
         self.mydb.commit()
 
     def getMessages(self,room):
-        sql = f"SELECT * FROM {room}"
+        sql = f"SELECT * FROM {room} ORDER BY id DESC LIMIT 20"
         self.cursor.execute(sql)
         return self.cursor.fetchall()
 
     def lastMessage(self,room):
         sql = f"SELECT * FROM {room} ORDER BY id DESC LIMIT 1"
+        self.cursor.execute(sql)
+        return self.cursor.fetchall()
+
+    def scrollLoadMessage(self,room,x):
+        sql = f"SELECT * FROM {room} ORDER BY id DESC LIMIT {x},20"
+        print(sql)
         self.cursor.execute(sql)
         return self.cursor.fetchall()

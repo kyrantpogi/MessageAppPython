@@ -123,7 +123,7 @@ class getMessages(Utils, object):
             res.body = CLIENT_error.INVALID_ROOM
 
 class lastMessage(Utils, object):
-    def on_get(sqlf,req,res):
+    def on_get(self,req,res):
         room = req.params["room"]
         mdb = MessageDb()
 
@@ -131,12 +131,23 @@ class lastMessage(Utils, object):
             messages = mdb.lastMessage(room)
             for data in messages:
                 data["date_time"] = str(data["date_time"])
-            print("=====================")
-            print(messages)
-            print("=====================")
             res.body = super().JSON_dumps(messages)
         except:
             res.body = CLIENT_error.INVALID_ROOM
+
+class scrollLoadMessage(Utils,object):
+    def on_get(self,req,res):
+        room = req.params["room"]
+        multiplyValue = req.params["x"]
+        mdb = MessageDb()
+        x=int(multiplyValue)*20
+
+        messages = mdb.scrollLoadMessage(room,x)
+        print("scrollLoadMessage")
+        for data in messages:
+            data["date_time"] = str(data["date_time"])
+        res.body = super().JSON_dumps(messages)
+
 
 
 #test url
