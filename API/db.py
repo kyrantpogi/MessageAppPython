@@ -46,7 +46,7 @@ class Db:
 class MessageDb:
     def __init__(self):
         self.mydb = mysql.connector.connect(
-            host="localhost",
+            host="192.168.0.158",
             user="tom",
             password="Redhat@123456",
             database="messages"
@@ -66,6 +66,7 @@ class MessageDb:
         print(sql,val)
         self.cursor.execute(sql,val)
         self.mydb.commit()
+        return str(timestamp)
 
     def getMessages(self,room):
         sql = f"SELECT * FROM {room} ORDER BY id DESC LIMIT 20"

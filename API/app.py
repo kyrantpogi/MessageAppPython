@@ -3,6 +3,7 @@ import requests
 from utils import *
 from views import *
 
+
 class HandleCORS(object):
     def process_request(self, req, res):
         res.set_header('Access-Control-Allow-Origin', '*')
@@ -14,6 +15,7 @@ class HandleCORS(object):
 
 app = application = falcon.API(middleware=[HandleCORS()])
 app.req_options.auto_parse_form_urlencoded = True
+
 
 #routes
 app.add_route("/signup", SignUp())
