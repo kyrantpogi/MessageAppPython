@@ -1,0 +1,121 @@
+<div class="card" style="width: 20rem;" id="room-name">
+                <div class="card-body">  
+                    <button class="btn btn-primary" id="composeBtn">+</button>
+                    <div id="room-panel">
+                    </div>      
+                </div>
+                <button type="button" class="btn btn-danger" id="logout">Logout</button>
+            </div>
+
+            <div class="card" id="message-panel">
+                <div class="card-header" id="place-room-name">?</div>
+                <div class="card-body" id="messages">
+                </div>
+                <div class="input-group" id="msg-input">
+                    <div class="input-group-prepend">
+                        <button class="btn btn-success input-group-text" id="send">SEND!</button>
+                    </div>
+                    <textarea class="form-control small-textinput" aria-label="With textarea" id="msgbox"></textarea>
+                </div>
+            </div>
+
+<div class="specialPanel">
+
+            <div class="card hide" id="composeForm">
+                <div class="card-body">
+                    <button type="button" id="close" class="close" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <div class="form-group">
+                        <label>To: </label>
+                        <input type="text" id="recipient" class="form-control" placeholder="Name of recipient"/>
+                    </div>
+                    <button class="btn btn-primary" id="submitCompose">Submit</button>
+                </div>    
+            </div>
+
+        </div>
+
+
+.mainPanel {
+    margin: 2%;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.column {
+    float: left;
+    width: 33.33%;
+    padding:10px;
+}
+
+.dim {
+    opacity: 20%;
+}
+
+#composeForm {
+    width: 20rem;
+    margin: 5% auto ;
+}
+
+.hide {
+    display: none;
+}
+
+#room-name {
+    position: absolute;
+}
+
+#room-panel {
+    margin-top: 10px;
+    width: 90px;
+}
+
+#room-panel button {
+    margin-top: 5px;
+}
+
+#message-panel {
+    position: absolute;
+    width: 60%;
+    height: 60%;
+    margin-bottom: 10px;
+    margin-left: 27%;
+}
+
+#msg-input {
+    position: absolute;
+    bottom: 0px;
+}
+
+#messages {
+    position: relative;
+    overflow: scroll;
+    height: auto;
+}
+
+.message-wrapper {
+    position: relative;
+    width: auto;
+    height: 45px;
+}
+
+.message-sender {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+}
+
+.message-receiver {
+    position: absolute;
+    top: 15px;
+    left: 10px;
+}
+
+.small-textinput {
+    height: 40px;
+}

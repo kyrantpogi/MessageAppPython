@@ -20,3 +20,32 @@ function ajax_get(url,success) {
         }
     });
 }
+
+function addMessage(sender,message,date) {
+    var username = sessionStorage.getItem("username");
+    if (sender == username) {
+        $("#messages").append("<div class='message-wrapper'>\
+        <span class='message-sender badge badge-primary'>"+message+" "+"<span class='badge badge-light'>"+date+"</span></span>"+"\
+        </div>");
+    } else {
+        $("#messages").append("<div class='message-wrapper'>\
+        <span class='message-receiver badge badge-primary'><span class='badge badge-light'>"+date+"</span>"+" "+message+"</span>"+"\
+        </div>");
+    }
+}
+
+function addPrependMessage(sender,message,date) {
+    var username = sessionStorage.getItem("username");
+    if (sender == username) {
+        $("#messages").prepend("<div class='message-wrapper'>\
+        <span class='message-sender badge badge-primary'>"+message+" "+"<span class='badge badge-light'>"+date+"</span></span>"+"\
+        </div>");
+    } else {
+        $("#messages").prepend("<div class='message-wrapper'>\
+        <span class='message-receiver badge badge-primary'><span class='badge badge-light'>"+date+"</span>"+" "+message+"</span>"+"\
+        </div>");
+    }
+}
+
+
+        
